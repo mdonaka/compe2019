@@ -1,5 +1,5 @@
-from evaluate import evaluate
 from iniitalze import generate
+from function import compe2019
 
 
 def addC(c):
@@ -18,9 +18,10 @@ def addE(e):
 
 if __name__ == '__main__':
     vars = generate(1)
+    f = compe2019().f
 
     for var in vars:
-        e, c = evaluate(var)
+        e, c = f(var)
         addC(c)
         addE(e)
         print(e)
