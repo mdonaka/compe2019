@@ -1,5 +1,6 @@
 openmdao_log.txt
 */pop_*.txt
 test/*
+result/*
 __pycache__/*
 *.swp

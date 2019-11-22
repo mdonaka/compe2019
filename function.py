@@ -1,5 +1,7 @@
 import os
 import csv
+from logging import getLogger
+logger = getLogger(__name__)
 
 __author__ = "R.Nakata"
 __date__ = "2019/11/21"
@@ -75,6 +77,9 @@ class compe2019:
         # get values
         objs = self.__getLineFromFile("pop_objs_eval")
         cons = self.__getLineFromFile("pop_cons_eval")
+
+        print(",".join(map(str, objs)))
+        print(",".join(map(str, cons)))
 
         return objs, cons
 
