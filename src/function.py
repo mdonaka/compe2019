@@ -81,7 +81,7 @@ class compe2019:
         print(",".join(map(str, objs)))
         print(",".join(map(str, cons)))
 
-        return objs, cons
+        return objs
 
 
 if __name__ == "__main__":

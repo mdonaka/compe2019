@@ -1,6 +1,7 @@
 from logging import getLogger, basicConfig, DEBUG
 from src.iniitalze import generate
 from src.function import compe2019
+from src.optimize import algorithm
 logger = getLogger(__name__)
 
 
@@ -8,8 +9,10 @@ if __name__ == '__main__':
     basicConfig(level=DEBUG)
     logger.debug("-- start --")
 
-    vars = generate(3)
+    compe = compe2019()
+    f = compe.f
 
-    f = compe2019().f
-    for var in vars:
-        e, c = f(var)
+    alg = algorithm(32,5,f)
+    alg.run(30)
+
+    alg.show()
