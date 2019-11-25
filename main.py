@@ -1,6 +1,6 @@
 from logging import getLogger, basicConfig, DEBUG
-from iniitalze import generate
-from function import compe2019
+from src.iniitalze import generate
+from src.function import compe2019
 logger = getLogger(__name__)
 
 
