@@ -9,7 +9,8 @@ if __name__ == '__main__':
     basicConfig(level=DEBUG)
     logger.debug("-- start --")
 
-    compe = compe2019()
+    th = input()
+    compe = compe2019(thread=th)
     f = compe.f
 
     alg = algorithm(32,5,f)

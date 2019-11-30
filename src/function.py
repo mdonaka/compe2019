@@ -19,9 +19,11 @@ class compe2019:
         evaluation count
     problem : str
         target problem is MOP or SOP
+    thread : str
+        optimize thread number
     """
 
-    def __init__(self, dir="./", isMOP=True):
+    def __init__(self, dir="./", isMOP=True, thread="1"):
         """
         Parameters
         ---------
@@ -33,6 +35,7 @@ class compe2019:
         self.__dir = dir
         self.__count = 0
         self.__problem = "MOP" if isMOP else "SOP"
+        self.__thread = thread
 
     def __getLineFromFile(self, fileName):
         """
@@ -44,7 +47,7 @@ class compe2019:
             file name of values
         """
         vals = []
-        with open("{}/{}/{}.txt".format(self.__dir, self.__problem, fileName), "r") as f:
+        with open("{}/{}/{}/{}.txt".format(self.__dir, self.__problem, self.__thread, fileName), "r") as f:
             reader = csv.reader(f)
             for row in reader:
                 for t in row[0].split("\t"):
@@ -66,13 +69,13 @@ class compe2019:
         self.__count += 1
 
         # set value
-        with open("{}/{}/pop_vars_eval.txt".format(self.__dir, self.__problem), "w") as f:
+        with open("{}/{}/{}/pop_vars_eval.txt".format(self.__dir, self.__problem, self.__thread), "w") as f:
             for x in var:
                 f.write("{}\t".format(x))
 
         # calc
         os.system(
-            "/home/nakata/compe2019/compe2019/bin/python {0}/{1}/windturbine_{1}.py {0}/{1}/".format(self.__dir, self.__problem))
+            "/home/nakata/compe2019/compe2019/bin/python {0}/{1}/windturbine_{1}.py {0}/{1}/{2}/".format(self.__dir, self.__problem, self.__thread))
 
         # get values
         objs = self.__getLineFromFile("pop_objs_eval")
