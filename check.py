@@ -15,7 +15,6 @@ if __name__ == "__main__":
             for x in row:
                 if float(x) < 0:
                     ok = False
-                    print(x)
             if ok:
                 cnt += 1
         print(all, cnt)

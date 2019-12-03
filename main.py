@@ -14,6 +14,6 @@ if __name__ == '__main__':
     f = compe.f
 
     alg = algorithm(32,5,f)
-    alg.run(30)
+    alg.run(50000)
 
     alg.show()

@@ -83,6 +83,7 @@ class compe2019:
 
         print(",".join(map(str, objs)))
         print(",".join(map(str, cons)))
+        print(",".join(map(str, var)))
 
         return objs
 
