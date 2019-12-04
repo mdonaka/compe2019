@@ -5,4 +5,5 @@ result/*
 */__pycache__/*
 __pycache__/*
 *.swp
+/parameters/
 
