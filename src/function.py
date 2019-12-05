@@ -55,7 +55,7 @@ class compe2019:
                 break
         return vals
 
-    def f(self, var):
+    def f6(self, var):
         """
         evaluate Benchmark function
 
@@ -85,7 +85,26 @@ class compe2019:
         print(",".join(map(str, cons)))
         print(",".join(map(str, var)))
 
+        p = 0
+        for con in cons:
+            val = 0 - con
+            if con <= 0:
+                p += 1
+        objs.append(p)
+
         return objs
+
+    def f(self, var):
+        """
+        evaluate Benchmark function
+
+        Parameters
+        ---------
+        var : list<float>
+            design variables
+        """
+        objs = self.f6(var)
+        return objs[:5]
 
 
 if __name__ == "__main__":
