@@ -1,7 +1,7 @@
 from logging import getLogger, basicConfig, DEBUG
 from src.iniitalze import generate
 from src.function import compe2019
-from src.optimize import algorithm
+from src.moead import MOEA_D
 logger = getLogger(__name__)
 
 
@@ -13,7 +13,7 @@ if __name__ == '__main__':
     compe = compe2019(thread=th)
     f = compe.f
 
-    alg = algorithm(32,5,f)
+    alg = MOEA_D(32,5,f)
     alg.run(50000)
 
     alg.show()
