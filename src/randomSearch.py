@@ -1,4 +1,4 @@
-from moead import MOEA_D
+from .moead import MOEA_D
 from pyDOE import lhs
 from logging import getLogger, basicConfig, DEBUG
 from platypus import Problem, Real, MOEAD
