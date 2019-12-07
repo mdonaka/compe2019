@@ -11,9 +11,9 @@ if __name__ == '__main__':
 
     th = input()
     compe = compe2019(thread=th)
-    f = compe.f6
+    f = compe.f
 
-    alg = MOEA_D(32,6,f)
+    alg = MOEA_D(32,5,f)
     alg.run(10000)
 
     alg.show()
