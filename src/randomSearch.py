@@ -1,3 +1,4 @@
+from moead import MOEA_D
 from pyDOE import lhs
 from logging import getLogger, basicConfig, DEBUG
 from platypus import Problem, Real, MOEAD
@@ -11,15 +12,22 @@ class RandomSearch:
         self.obj = obj
         self.f = f
         self.ran = [[0.0, 1.0] for _ in range(dim)]
-        pass
 
     def run(self, n=10000):
-        comp = [1000, 1000, 1000, 500, 500]
-        comp = [10, 10, 10, 50, 50]
+        comp = [2000, 2000, 1000, 1000, 1000]
         for c in comp:
-            x,y = self.generateLHS(c)
-            self.ranComp(x,y)
-            logger.debug(self.ran)
+            x, y = self.generateLHS(c)
+            self.ranComp(x, y)
+            logger.debug(f"-- finish {c} --")
+
+        sum = 0
+        for p in comp:
+            sum += p
+        num = n - sum
+        logger.debug(num)
+        r = [Real(x[0], x[1]) for x in self.ran]
+        mo = MOEA_D(des=self.dim, obj=self.obj, f=self.f, r=r)
+        mo.run(n=num)
 
     def generateLHS(self, size=1000):
         x = [[s[i] for i in range(self.dim)] for s in lhs(self.dim, size, "c")]
@@ -55,7 +63,6 @@ class RandomSearch:
                     dif = d
             self.ran[i] = [l[it], l[it+2]]
 
-
     def show(self):
         for sol in self.algorithm.result:
             logger.debug(sol.objectives)
@@ -65,7 +72,7 @@ if __name__ == "__main__":
     basicConfig(level=DEBUG)
 
     def f(x):
-        val = [np.sum(x), 30-np.sum(x), np.sum(x), np.sum(x)]
+        val = [np.sum(x), np.sum(x), np.sum(x), np.sum(x)]
         print(val)
         return val
 

@@ -3,9 +3,9 @@ from platypus import Problem, Real, MOEAD
 logger = getLogger(__name__)
 
 class MOEA_D:
-    def __init__(self, des, obj, f):
+    def __init__(self, des, obj, f, r):
         self.problem = Problem(des,obj)
-        self.problem.types[:] = Real(0.0,1.0)
+        self.problem.types[:] = r#Real(0.0,1.0)
         self.problem.function = f
         self.algorithm = MOEAD(self.problem)
 
